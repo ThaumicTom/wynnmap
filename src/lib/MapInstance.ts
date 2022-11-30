@@ -37,7 +37,7 @@ export const createMap = (container: HTMLElement, image: string, mapData: MapDat
 
 	imageOverlay.addTo(map);
 
-	map.setView([-1750, 0]);
+	map.setView([-1750, 0], 0);
 
 	return map;
 };
