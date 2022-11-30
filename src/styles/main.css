@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Space+Mono&display=swap');
+
+:root {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
+
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	background-color: #0d0e11;
+	color: #fff;
+	min-height: 100vh;
+}
+
+.monospace {
+	font-family: 'Space Mono', monospace;
+}
+
+#app {
+	height: 100vh;
+}
+
+.leaflet-container {
+	background: inherit;
+}
+
+.leaflet-image-layer {
+	image-rendering: pixelated;
+}

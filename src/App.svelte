@@ -1,45 +1,71 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
+	import * as L from 'leaflet';
+
+	// Map data
+	import mapImage from './assets/maps/main-map.png';
+
+	const mainMapData = {
+		width: 4034,
+		height: 6414,
+
+		centerX: 2382,
+		centerY: 6573,
+	};
+
+	// Extend CRS.Simple class to use image coordinates
+	let CRSPixel = L.Util.extend(L.CRS.Simple, {
+		transformation: new L.Transformation(1, 0, 1, 0),
+	});
+
+	// Calculate the bounds of the image using data
+	const calculateBounds = (mapData) => {
+		const corner1 = L.latLng({
+			lat: -mapData.centerY,
+			lng: -mapData.centerX,
+		});
+
+		const corner2 = L.latLng({
+			lat: mapData.height - mapData.centerY,
+			lng: mapData.width - mapData.centerX,
+		});
+
+		return L.latLngBounds(corner1, corner2);
+	};
+
+	// Create the map on container element
+	const createMap = (container: HTMLElement): L.Map => {
+		const map = L.map(container, {
+			crs: CRSPixel,
+			minZoom: -3,
+		});
+
+		const image = L.imageOverlay(mapImage, calculateBounds(mainMapData));
+
+		image.addTo(map);
+
+		map.setView([-1750, 0]);
+
+		return map;
+	};
+
+	// Set map instance
+	const mapAction = (container: HTMLDivElement): { destroy: () => void } => {
+		let map = createMap(container);
+
+		return {
+			destroy: () => {
+				map.remove();
+				map = null;
+			},
+		};
+	};
 </script>
 
-<main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer"> 
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer"> 
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
+<div id="map" use:mapAction />
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
+	#map {
+		width: 100%;
+		height: 100%;
+	}
 </style>
