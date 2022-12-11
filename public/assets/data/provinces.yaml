@@ -1,0 +1,25 @@
+---
+- name: The Province of Wynn
+  position:
+    x: 100
+    z: -1750
+  filters:
+    - Province
+- name: Corkus Island
+  position:
+    x: -1600
+    z: -2800
+  filters:
+    - Province
+- name: The Province of Gavel
+  position:
+    x: -100
+    z: -5000
+  filters:
+    - Province
+- name: The Silent Expanse
+  position:
+    x: 1100
+    z: -800
+  filters:
+    - Province

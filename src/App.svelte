@@ -1,24 +1,26 @@
 <script lang="ts">
-	import { createMap } from './lib/MapInstance';
+	import type { Map } from 'leaflet';
+	import { createMap, addLabel } from './lib/MapInstance';
 
 	import mainMapImage from './assets/maps/main-map.png';
+	import yaml from 'js-yaml';
 
 	const mainMapData = {
 		imagePath: mainMapImage,
 
 		dimensions: {
 			x: 4034,
-			y: 6414,
+			z: 6414,
 		},
 
 		centerPosition: {
 			x: 2382,
-			y: 6573,
+			z: 6573,
 		},
 
 		initPosition: {
 			x: 0,
-			y: -1750,
+			z: -1750,
 		},
 
 		initZoom: 0,
@@ -27,9 +29,31 @@
 		maxZoom: 3,
 	};
 
+	// : Promise<LabelOptions[]>
+	const getYamlFile = async (path: string): Promise<any> => {
+		const response = await fetch(path);
+		const text = await response.text();
+
+		const parsedText = yaml.load(text);
+
+		return parsedText;
+	};
+
+	const addWaypoints = (map: Map, paths: string[]) => {
+		paths.map((path) =>
+			getYamlFile(path).then((waypoints: ExtendedLabelOptions[]) => {
+				for (const waypoint of waypoints) {
+					addLabel(waypoint).addTo(map);
+				}
+			})
+		);
+	};
+
 	// Set map instance
 	const mapAction = (container: HTMLDivElement): { destroy: () => void } => {
 		let map = createMap(container, mainMapData);
+
+		addWaypoints(map, ['./assets/data/places.yaml', './assets/data/provinces.yaml']);
 
 		return {
 			destroy: () => {

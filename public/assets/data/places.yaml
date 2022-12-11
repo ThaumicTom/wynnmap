@@ -1,0 +1,809 @@
+---
+- name: Ragni
+  position:
+    x: -820
+    z: -1581
+  level: 1
+  filters:
+    - Place
+    - Major
+- name: Emerald Trail
+  position:
+    x: -603
+    z: -1611
+  level: 1
+  filters:
+    - Place
+    - Minor
+
+- name: Katoa Ranch
+  position:
+    x: -800
+    z: -1907
+  level: 5
+  filters:
+    - Place
+    - Minor
+- name: Nivla Woods
+  position:
+    x: -198
+    z: -1536
+  level: 5
+  filters:
+    - Place
+    - Minor
+- name: Elkurn
+  position:
+    x: 9
+    z: -1228
+  level: 5
+  filters:
+    - Place
+    - Minor
+- name: Coastal Trail
+  position:
+    x: -290
+    z: -2127
+  level: 5
+  filters:
+    - Place
+    - Minor
+
+- name: Maltic
+  position:
+    x: -540
+    z: -1927
+  level: 10
+  filters:
+    - Place
+    - Minor
+- name: Detlas Suburb
+  position:
+    x: 280
+    z: -1586
+  level: 10
+  filters:
+    - Place
+    - Minor
+- name: Detlas
+  position:
+    x: 476
+    z: -1590
+  level: 10
+  filters:
+    - Place
+    - Major
+- name: Black Road
+  position:
+    x: 667
+    z: -1519
+  level: 12
+  filters:
+    - Place
+    - Minor
+
+- name: Ternaves
+  position:
+    x: 828
+    z: -1610
+  level: 15
+  filters:
+    - Place
+    - Minor
+- name: Bremminglar
+  position:
+    x: 705
+    z: -2096
+  level: 15
+  filters:
+    - Place
+    - Minor
+- name: The Bear Zoo
+  position:
+    x: -373
+    z: -2456
+  level: 15
+  filters:
+    - Place
+    - Minor
+
+- name: Mt. Wynn
+  position:
+    x: -98
+    z: -2010
+  level: 20
+  filters:
+    - Place
+    - Minor
+- name: Nemract
+  position:
+    x: 119
+    z: -2206
+  level: 20
+  filters:
+    - Place
+    - Major
+- name: Ancient Nemract
+  position:
+    x: 206
+    z: -1883
+  level: 20
+  filters:
+    - Place
+    - Minor
+- name: Rooster Island
+  position:
+    x: -106
+    z: -2476
+  level: 20
+  filters:
+    - Place
+    - Minor
+- name: Underwater Route
+  position:
+    x: 80
+    z: -2645
+  level: 20
+  filters:
+    - Place
+    - Minor
+- name: Durum Isles
+  position:
+    x: 437
+    z: -2880
+  level: 20
+  filters:
+    - Place
+    - Minor
+- name: Roots of Corruption
+  position:
+    x: 233
+    z: -1290
+  filters:
+    - Place
+    - Minor
+
+- name: Selchar
+  position:
+    x: 91
+    z: -3183
+  level: 25
+  filters:
+    - Place
+    - Major
+- name: Seavale Reefs
+  position:
+    x: 300
+    z: -3185
+  level: 25
+  filters:
+    - Place
+    - Minor
+- name: Tempo Town
+  position:
+    x: -301
+    z: -1170
+  level: 25
+  filters:
+    - Place
+    - Major
+- name: Time Valley
+  position:
+    x: -459
+    z: -1254
+  level: 25
+  filters:
+    - Place
+    - Minor
+- name: Door of Time
+  position:
+    x: -549
+    z: -1214
+  level: 25
+  filters:
+    - Place
+    - Minor
+- name: Tower of Amnesia
+  position:
+    x: 125
+    z: -1225
+  level: 25
+  filters:
+    - Place
+    - Minor
+- name: Corrupted Village
+  position:
+    x: 411
+    z: -1127
+  level: 25
+  filters:
+    - Place
+    - Minor
+- name: Abandoned Mines
+  position:
+    x: 763
+    z: -1250
+  level: 25
+  filters:
+    - Place
+    - Minor
+- name: Saint's Row
+  position:
+    x: 305
+    z: -2053
+  level: 25
+  filters:
+    - Place
+    - Minor
+- name: Lion Lair
+  position:
+    x: 805
+    z: -2253
+  level: 25
+  filters:
+    - Place
+    - Minor
+
+- name: Almuj
+  position:
+    x: 969
+    z: -1983
+  level: 30
+  filters:
+    - Place
+    - Major
+- name: Invaded Barracks
+  position:
+    x: 1381
+    z: -2246
+  level: 30
+  filters:
+    - Place
+    - Minor
+- name: Mage Island
+  position:
+    x: 873
+    z: -2844
+  level: 30
+  filters:
+    - Place
+    - Minor
+- name: Half Moon Island
+  position:
+    x: 999
+    z: -2579
+  level: 30
+  filters:
+    - Place
+    - Minor
+
+- name: Rymek
+  position:
+    x: 1249
+    z: -1335
+  level: 35
+  filters:
+    - Place
+    - Minor
+- name: Mummy's Tomb
+  position:
+    x: 1090
+    z: -2329
+  level: 35
+  filters:
+    - Place
+    - Minor
+
+- name: Nesaak
+  position:
+    x: 116
+    z: -810
+  level: 40
+  filters:
+    - Place
+    - Major
+- name: Underground Squid Village
+  position:
+    x: 223
+    z: -812
+  level: 40
+  filters:
+    - Place
+    - Minor
+- name: Llevigar
+  position:
+    x: -2024
+    z: -4395
+  level: 40
+  filters:
+    - Place
+    - Major
+- name: Bucie
+  position:
+    x: -1456
+    z: -4723
+  level: 40
+  filters:
+    - Place
+    - Minor
+
+- name: House of Twain
+  position:
+    x: 122
+    z: -368
+  level: 45
+  filters:
+    - Place
+    - Minor
+- name: Karoc Quarry
+  position:
+    x: -1617
+    z: -4470
+  level: 45
+  filters:
+    - Place
+    - Minor
+- name: Lusuco
+  position:
+    x: -183
+    z: -352
+  level: 45
+  filters:
+    - Place
+    - Minor
+- name: Ice Islands
+  position:
+    x: 909
+    z: -3339
+  level: 45
+  filters:
+    - Place
+    - Major
+- name: Nodguj Nation
+  position:
+    x: 791
+    z: -3340
+  level: 45
+  filters:
+    - Place
+    - Minor
+- name: Dujgon Nation
+  position:
+    x: 977
+    z: -3468
+  level: 45
+  filters:
+    - Place
+    - Minor
+- name: Ghost Ship
+  position:
+    x: 718
+    z: -3741
+  level: 45
+  filters:
+    - Place
+    - Minor
+- name: Tower of Ascension
+  position:
+    x: -309
+    z: -429
+  filters:
+    - Place
+    - Minor
+
+- name: The Great Bridge
+  position:
+    x: -364
+    z: -769
+  level: 50
+  filters:
+    - Place
+    - Minor
+- name: Jungle Village
+  position:
+    x: -751
+    z: -751
+  level: 50
+  filters:
+    - Place
+    - Minor
+- name: Zhight Island
+  position:
+    x: -500
+    z: -2831
+  level: 50
+  filters:
+    - Place
+    - Minor
+- name: Swamp
+  position:
+    x: -1923
+    z: -5303
+  level: 50
+  filters:
+    - Place
+    - Minor
+- name: Olux
+  position:
+    x: -1728
+    z: -5532
+  level: 50
+  filters:
+    - Place
+    - Major
+
+- name: Troms
+  position:
+    x: -794
+    z: -963
+  level: 55
+  filters:
+    - Place
+    - Major
+- name: Volcanic Isles
+  position:
+    x: -992
+    z: -3672
+  level: 55
+  filters:
+    - Place
+    - Minor
+- name: Skiens Island
+  position:
+    x: 376
+    z: -3485
+  level: 55
+  filters:
+    - Place
+    - Minor
+
+- name: Pirate Town
+  position:
+    x: -695
+    z: -3132
+  level: 60
+  filters:
+    - Place
+    - Minor
+- name: Maro Peaks
+  position:
+    x: 173
+    z: -3947
+  level: 60
+  filters:
+    - Place
+    - Minor
+- name: Dark Forest
+  position:
+    x: -1162
+    z: -5341
+  level: 60
+  filters:
+    - Place
+    - Minor
+- name: Geliboard
+  position:
+    x: -1005
+    z: -5300
+  level: 60
+  filters:
+    - Place
+    - Major
+- name: Dernel Jungle
+  position:
+    x: -779
+    z: -435
+  level: 60-70
+  filters:
+    - Place
+    - Minor
+
+- name: Pre-Light Forest
+  position:
+    x: -1517
+    z: -4792
+  level: 65
+  filters:
+    - Place
+    - Minor
+
+- name: Pre-Light Forest
+  position:
+    x: -1517
+    z: -4792
+  level: 65
+  filters:
+    - Place
+    - Minor
+
+- name: Temple of Legends
+  position:
+    x: -690
+    z: -1021
+  level: 70
+  filters:
+    - Place
+    - Minor
+- name: Efilim
+  position:
+    x: -1067
+    z: -5008
+  level: 70
+  filters:
+    - Place
+    - Minor
+- name: Light Forest
+  position:
+    x: -970
+    z: -4893
+  level: 70
+  filters:
+    - Place
+    - Minor
+- name: The Forgery
+  position:
+    x: -847
+    z: -4910
+  level: 70
+  filters:
+    - Place
+    - Major
+- name: Kander Forest
+  position:
+    x: -801
+    z: -5316
+  level: 70
+  filters:
+    - Place
+    - Minor
+- name: Lexdale
+  position:
+    x: -609
+    z: -5442
+  level: 70
+  filters:
+    - Place
+    - Minor
+
+- name: Cinfras
+  position:
+    x: -456
+    z: -4928
+  level: 75
+  filters:
+    - Place
+    - Major
+- name: Aldorei
+  position:
+    x: -480
+    z: -4546
+  level: 75
+  filters:
+    - Place
+    - Minor
+- name: Lake Gylia
+  position:
+    x: -160
+    z: -5242
+  level: 75
+  filters:
+    - Place
+    - Minor
+- name: Gert Camp
+  position:
+    x: -46
+    z: -5539
+  level: 75
+  filters:
+    - Place
+    - Minor
+- name: Dead Island
+  position:
+    x: 872
+    z: -3923
+  level: 75
+  filters:
+    - Place
+    - Minor
+- name: Guild Hall
+  position:
+    x: -311
+    z: -4933
+  filters:
+    - Place
+    - Minor
+- name: Letvus Airbase
+  position:
+    x: -185
+    z: -4921
+  filters:
+    - Place
+    - Minor
+- name: Light's Secret
+  position:
+    x: -1041
+    z: -4480
+  filters:
+    - Place
+    - Minor
+
+- name: Thanos
+  position:
+    x: 133
+    z: -5241
+  level: 80
+  filters:
+    - Place
+    - Minor
+- name: Ozoth's Spire
+  position:
+    x: 256
+    z: -5288
+  filters:
+    - Place
+    - Minor
+- name: The Hive
+  position:
+    x: 394
+    z: -5573
+  filters:
+    - Place
+    - Minor
+
+- name: Canyon of the Lost
+  position:
+    x: 630
+    z: -5223
+  level: 85
+  filters:
+    - Place
+    - Minor
+- name: Thesead
+  position:
+    x: 769
+    z: -5043
+  level: 85
+  filters:
+    - Place
+    - Major
+- name: Bantisu Air Temple
+  position:
+    x: 611
+    z: -4876
+  level: 85
+  filters:
+    - Place
+    - Minor
+- name: Eltom
+  position:
+    x: 940
+    z: -5506
+  level: 85
+  filters:
+    - Place
+    - Major
+- name: Corkus City
+  position:
+    x: -1632
+    z: -2930
+  level: 85
+  filters:
+    - Place
+    - Major
+- name: Relos
+  position:
+    x: -1669
+    z: -2366
+  level: 85
+  filters:
+    - Place
+    - Minor
+
+- name: Rodoroc
+  position:
+    x: 1101
+    z: -5136
+  level: 90
+  filters:
+    - Place
+    - Major
+- name: Maex
+  position:
+    x: 1485
+    z: -5292
+  level: 90
+  filters:
+    - Place
+    - Minor
+- name: Molten Heights
+  position:
+    x: 1495
+    z: -5491
+  level: 90
+  filters:
+    - Place
+    - Minor
+- name: Jofash Dock
+  position:
+    x: 1291
+    z: -4082
+  level: 90
+  filters:
+    - Place
+    - Minor
+- name: Avos Territory
+  position:
+    x: -1822
+    z: -3176
+  level: 90
+  filters:
+    - Place
+    - Minor
+- name: Legendary Island
+  position:
+    x: -1111
+    z: -2429
+  level: 90+
+  filters:
+    - Place
+    - Major
+
+- name: Sky Islands
+  position:
+    x: 1266
+    z: -4697
+  level: 95
+  filters:
+    - Place
+    - Minor
+- name: Kandon-Beda
+  position:
+    x: 757
+    z: -4466
+  level: 95
+  filters:
+    - Place
+    - Minor
+
+- name: Ahmsord
+  position:
+    x: 1009
+    z: -4554
+  level: 100
+  filters:
+    - Place
+    - Major
+- name: Ruined Olmic City
+  position:
+    x: 640
+    z: -578
+  level: 100
+  filters:
+    - Place
+    - Minor
+- name: The Eldritch Outlook
+  position:
+    x: 1371
+    z: -923
+  level: 100+
+  filters:
+    - Place
+    - Minor
+
+- name: Lutho
+  position:
+    x: 996
+    z: -692
+  level: 105
+  filters:
+    - Place
+    - Major
+
+- name: Path to Darkness
+  position:
+    x: 1383
+    z: -558
+  level: 110
+  filters:
+    - Place
+    - Minor

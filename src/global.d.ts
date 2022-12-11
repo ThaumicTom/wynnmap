@@ -1,6 +1,6 @@
 interface Vector2 {
 	x: number;
-	y: number;
+	z: number;
 }
 
 interface MapData {
@@ -13,4 +13,15 @@ interface MapData {
 	initZoom: number;
 	minZoom: number;
 	maxZoom: number;
+}
+
+interface LabelOptions {
+	name: string;
+	position: Vector2;
+
+	filters?: string[];
+}
+
+interface ExtendedLabelOptions extends LabelOptions {
+	[key: string]: any;
 }

@@ -1,36 +1,94 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Space+Mono&display=swap');
-
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v13/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUUsj.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v13/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVksj.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacemono/v12/i7dPIFZifjKcF5UAWdDRUEY.ttf) format('truetype');
+}
 :root {
-	font-family: 'Space Grotesk', sans-serif;
-	font-size: 16px;
-	line-height: 24px;
-	font-weight: 400;
-
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
-
 body {
-	margin: 0;
-	background-color: #0d0e11;
-	color: #fff;
-	min-height: 100vh;
+  margin: 0;
+  background-color: #0d0e11;
+  color: #fff;
+  min-height: 100vh;
+  font-family: 'Space Grotesk', sans-serif;
 }
-
+body p {
+  margin: 0;
+}
 .monospace {
-	font-family: 'Space Mono', monospace;
+  font-family: 'Space Mono', monospace;
 }
-
 #app {
-	height: 100vh;
+  height: 100vh;
 }
-
 .leaflet-container {
-	background: inherit;
+  background: inherit;
 }
-
 .leaflet-image-layer {
-	image-rendering: pixelated;
+  image-rendering: pixelated;
+}
+.label {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #edf2f4;
+  -webkit-text-stroke: calc(0.2rem + 0.2rem * calc(var(--zoom-level) * var(--zoom-level))) rgba(43, 45, 66, 0.8);
+  paint-order: stroke fill;
+  transition-property: transform, font-size, opacity, text-stroke !important;
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  border: 0;
+}
+.label.place {
+  font-weight: 700;
+  font-size: calc(0.5rem + 2.5rem * calc(var(--zoom-level) * var(--zoom-level)));
+  opacity: clamp(0, calc(var(--zoom-level) * 5 - 1), 1);
+}
+.label.place.major {
+  color: #edf2f4;
+}
+.label.place.minor {
+  color: #b1b1b1;
+}
+.label.place .subtext {
+  font-size: calc(calc(0.5rem + 2.5rem * calc(var(--zoom-level) * var(--zoom-level))) / 2);
+  margin-top: calc(0.5rem + 2.5rem * calc(var(--zoom-level) * var(--zoom-level)));
+  transition-property: font-size, margin-top;
+  transition: 0.25s cubic-bezier(0, 0, 0.25, 1);
+}
+.label.province {
+  color: #f6bd60;
+  font-weight: 900;
+  font-size: calc(calc(0.5rem + 2.5rem * calc(var(--zoom-level) * var(--zoom-level))) + 0.5rem);
+  opacity: calc(1 - clamp(0, calc(var(--zoom-level) * 5 - 2.25), 1));
+}
+#map .leaflet-marker-icon span {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
 }

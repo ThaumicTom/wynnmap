@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=Space+Mono&display=swap');
+
+:root {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 16px;
+	// line-height: 24px;
+	font-weight: 400;
+
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	background-color: #0d0e11;
+	color: #fff;
+	min-height: 100vh;
+	font-family: 'Space Grotesk', sans-serif;
+
+	p {
+		margin: 0;
+	}
+}
+
+.monospace {
+	font-family: 'Space Mono', monospace;
+}
+
+#app {
+	height: 100vh;
+}
+
+.leaflet-container {
+	background: inherit;
+}
+
+.leaflet-image-layer {
+	image-rendering: pixelated;
+}
+
+// Generic
+@font: 'Space Grotesk', sans-serif;
+@white: #edf2f4;
+@black: #2b2d42;
+
+// Colors
+@color-province: #f6bd60;
+@color-major: @white;
+@color-minor: desaturate(darken(@white, 25%), 25%);
+
+// Leadlet defaults
+@duration: 0.25s;
+@timing-function: cubic-bezier(0, 0, 0.25, 1);
+
+// Zoom
+@zoom-level: var(--zoom-level);
+@zoom-level-cubic: calc(@zoom-level * @zoom-level);
+
+.label {
+	@label-font-size: calc(0.5rem + 2.5rem * @zoom-level-cubic);
+	@label-text-stroke: calc(0.2rem + 0.2rem * @zoom-level-cubic);
+
+	font-family: @font;
+	color: @white;
+
+	-webkit-text-stroke: @label-text-stroke fadeout(@black, 20%);
+	paint-order: stroke fill;
+
+	transition-property: transform, font-size, opacity, text-stroke !important;
+
+	&.place {
+		@label-opacity: clamp(0, calc(@zoom-level * 5 - 1), 1);
+
+		font-weight: 700;
+		font-size: @label-font-size;
+		opacity: @label-opacity;
+
+		&.major {
+			color: @color-major;
+		}
+
+		&.minor {
+			color: @color-minor;
+		}
+
+		& .subtext {
+			font-size: calc(@label-font-size / 2);
+			margin-top: @label-font-size;
+			transition-property: font-size, margin-top;
+			transition: @duration @timing-function;
+		}
+	}
+
+	&.province {
+		@label-opacity: clamp(0, calc(@zoom-level * 5 - 2.25), 1);
+
+		color: @color-province;
+
+		font-weight: 900;
+		font-size: calc(@label-font-size + 0.5rem);
+		opacity: calc(1 - @label-opacity);
+	}
+
+	// Reset
+	background-color: transparent;
+	box-shadow: none;
+	padding: 0;
+	border: 0;
+}
+
+#map .leaflet-marker-icon span {
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	white-space: nowrap;
+}
