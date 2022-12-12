@@ -38,7 +38,7 @@ body {
 body p {
   margin: 0;
 }
-.monospace {
+.font-monospace {
   font-family: 'Space Mono', monospace;
 }
 #app {
@@ -91,4 +91,66 @@ body p {
   left: 50%;
   transform: translate(-50%, -50%);
   white-space: nowrap;
+}
+.position {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 1rem;
+  z-index: 10001;
+  color: #2b2d42;
+  text-align: center;
+}
+.position > div {
+  cursor: pointer;
+  position: relative;
+  border-radius: 0.25rem;
+  padding-block: 0.75rem;
+  margin: 0 0.25rem;
+  min-width: 5ch;
+  background-color: #edf2f4;
+  box-shadow: 0 0.25rem 0.5rem rgba(43, 45, 66, 0.5);
+}
+.position > div::before {
+  position: absolute;
+  top: 0.75rem;
+  color: #888bb1;
+}
+.position > div.x {
+  padding-inline: 0.75rem 1.5rem;
+  text-align: right;
+}
+.position > div.x::before {
+  content: 'x';
+  right: 0.5rem;
+}
+.position > div.z {
+  padding-inline: 1.5rem 0.75rem;
+  text-align: left;
+}
+.position > div.z::before {
+  content: 'z';
+  left: 0.5rem;
+}
+#contextmenu {
+  position: absolute;
+  z-index: 10000;
+  background-color: #edf2f4;
+  color: #2b2d42;
+}
+ul {
+  list-style: none;
+  padding: 0.25rem 0;
+  margin: 0;
+  box-shadow: 0 0.25rem 0.5rem rgba(43, 45, 66, 0.5);
+}
+ul li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+ul li:hover {
+  background-color: #b1b1b1;
 }

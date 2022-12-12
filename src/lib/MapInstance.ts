@@ -46,8 +46,8 @@ export const createMap = (container: HTMLElement, mapData: MapData): L.Map => {
 
 	mapContainer.style.setProperty('--zoom-level', zoomLevel.toFixed(2).toString());
 
-	map.on('zoomanim', (e) => {
-		const zoomLevel = (e.zoom - mapData.minZoom) / zoomDivisor;
+	map.on('zoomanim', (event) => {
+		const zoomLevel = (event.zoom - mapData.minZoom) / zoomDivisor;
 
 		mapContainer.style.setProperty('--zoom-level', zoomLevel.toFixed(2).toString());
 	});

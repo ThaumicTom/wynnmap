@@ -24,7 +24,7 @@ body {
 	}
 }
 
-.monospace {
+.font-monospace {
 	font-family: 'Space Mono', monospace;
 }
 
@@ -43,12 +43,16 @@ body {
 // Generic
 @font: 'Space Grotesk', sans-serif;
 @white: #edf2f4;
+@grey: desaturate(darken(@white, 25%), 25%);
 @black: #2b2d42;
+
+@border-radius: 0.25rem;
+@box-shadow: 0 0.25rem 0.5rem fadeout(@black, 50%);
 
 // Colors
 @color-province: #f6bd60;
 @color-major: @white;
-@color-minor: desaturate(darken(@white, 25%), 25%);
+@color-minor: @grey;
 
 // Leadlet defaults
 @duration: 0.25s;
@@ -118,4 +122,85 @@ body {
 	transform: translate(-50%, -50%);
 
 	white-space: nowrap;
+}
+
+.position {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	margin-bottom: 1rem;
+	z-index: 10001;
+
+	color: @black;
+	text-align: center;
+
+	> div {
+		@padding: 0.75rem;
+
+		cursor: pointer;
+
+		position: relative;
+		border-radius: 0.25rem;
+		padding-block: @padding;
+		margin: 0 0.25rem;
+		min-width: 5ch;
+
+		background-color: @white;
+		box-shadow: @box-shadow;
+
+		&::before {
+			position: absolute;
+			top: @padding;
+			color: lighten(@black, 40%);
+		}
+
+		&.x {
+			padding-inline: @padding @padding * 2;
+			text-align: right;
+
+			&::before {
+				content: 'x';
+				right: 0.5rem;
+			}
+		}
+
+		&.z {
+			padding-inline: @padding * 2 @padding;
+			text-align: left;
+
+			&::before {
+				content: 'z';
+				left: 0.5rem;
+			}
+		}
+	}
+}
+
+#contextmenu {
+	position: absolute;
+	z-index: 10000;
+
+	background-color: @white;
+	color: @black;
+}
+
+ul {
+	list-style: none;
+	padding: 0.25rem 0;
+	margin: 0;
+
+	box-shadow: @box-shadow;
+
+	li {
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+
+		&:hover {
+			background-color: @grey;
+		}
+	}
 }
