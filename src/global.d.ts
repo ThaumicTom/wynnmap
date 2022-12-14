@@ -1,14 +1,20 @@
 interface Vector2 {
 	x: number;
+	y: number;
+}
+
+interface Vector3 {
+	x: number;
+	y?: number;
 	z: number;
 }
 
 interface MapData {
 	imagePath: string;
 
-	dimensions: Vector2;
-	centerPosition: Vector2;
-	initPosition: Vector2;
+	dimensions: Vector3;
+	centerPosition: Vector3;
+	initPosition: Vector3;
 
 	initZoom: number;
 	minZoom: number;
@@ -17,9 +23,10 @@ interface MapData {
 
 interface LabelOptions {
 	name: string;
-	position: Vector2;
+	position: Vector3;
 
 	filters?: string[];
+	level?: number;
 }
 
 interface ExtendedLabelOptions extends LabelOptions {

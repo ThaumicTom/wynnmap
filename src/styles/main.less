@@ -1,4 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=Space+Mono&display=swap');
+@font-face {
+	font-family: 'Space Grotesk';
+	src: url('/assets/fonts/SpaceGrotesk400.ttf');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Space Grotesk';
+	src: url('/assets/fonts/SpaceGrotesk700.ttf');
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'Space Mono';
+	src: url('/assets/fonts/SpaceMono.ttf');
+}
 
 :root {
 	font-family: 'Space Grotesk', sans-serif;
@@ -43,20 +58,24 @@ body {
 // Generic
 @font: 'Space Grotesk', sans-serif;
 @white: #edf2f4;
+@light-grey: desaturate(darken(@white, 10%), 25%);
 @grey: desaturate(darken(@white, 25%), 25%);
+@dark-grey: lighten(@black, 40%);
 @black: #2b2d42;
 
 @border-radius: 0.25rem;
 @box-shadow: 0 0.25rem 0.5rem fadeout(@black, 50%);
+@duration: 150ms;
+@timing-function: ease-out;
 
 // Colors
 @color-province: #f6bd60;
 @color-major: @white;
 @color-minor: @grey;
 
-// Leadlet defaults
-@duration: 0.25s;
-@timing-function: cubic-bezier(0, 0, 0.25, 1);
+// Leaflet defaults
+@leaflet-duration: 0.25s;
+@leaflet-timing-function: cubic-bezier(0, 0, 0.25, 1);
 
 // Zoom
 @zoom-level: var(--zoom-level);
@@ -69,8 +88,15 @@ body {
 	font-family: @font;
 	color: @white;
 
-	-webkit-text-stroke: @label-text-stroke fadeout(@black, 20%);
-	paint-order: stroke fill;
+	.overlay {
+		z-index: 1;
+	}
+
+	.outline {
+		-webkit-text-stroke: @label-text-stroke fadeout(@black, 20%);
+		color: transparent;
+		z-index: 0;
+	}
 
 	transition-property: transform, font-size, opacity, text-stroke !important;
 
@@ -93,7 +119,7 @@ body {
 			font-size: calc(@label-font-size / 2);
 			margin-top: @label-font-size;
 			transition-property: font-size, margin-top;
-			transition: @duration @timing-function;
+			transition: @leaflet-duration @leaflet-timing-function;
 		}
 	}
 
@@ -102,7 +128,7 @@ body {
 
 		color: @color-province;
 
-		font-weight: 900;
+		font-weight: 700;
 		font-size: calc(@label-font-size + 0.5rem);
 		opacity: calc(1 - @label-opacity);
 	}
@@ -124,43 +150,98 @@ body {
 	white-space: nowrap;
 }
 
+.zoom-control,
 .position {
+	position: absolute;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
 
-	position: absolute;
+@controls-height: 3rem;
+
+.zoom-control {
+	left: 0;
 	bottom: 0;
-	width: 100%;
+	margin-left: 1rem;
 	margin-bottom: 1rem;
-	z-index: 10001;
+	z-index: 10002;
 
 	color: @black;
 	text-align: center;
 
-	> div {
-		@padding: 0.75rem;
+	box-shadow: @box-shadow;
+	border-radius: @border-radius;
 
+	> button {
 		cursor: pointer;
+
+		background-color: @white;
+
+		position: relative;
+		padding-inline: 0.5rem;
+		border: 0;
+		border-right: 1px solid @light-grey;
+		height: @controls-height;
+
+		transition: @duration @timing-function;
+
+		&:first-child {
+			border-top-left-radius: @border-radius;
+			border-bottom-left-radius: @border-radius;
+		}
+
+		&:last-child {
+			border-top-right-radius: @border-radius;
+			border-bottom-right-radius: @border-radius;
+			border-right: 0;
+		}
+
+		&:hover {
+			background-color: @light-grey;
+		}
+
+		&.disabled {
+			background-color: @light-grey;
+			color: @dark-grey;
+			cursor: default;
+		}
+	}
+}
+
+.position {
+	bottom: 0;
+	width: 100%;
+	margin-bottom: 1rem;
+	z-index: 10001;
+	color: @black;
+
+	> div {
+		cursor: pointer;
+
+		display: flex;
+		align-items: center;
 
 		position: relative;
 		border-radius: 0.25rem;
-		padding-block: @padding;
 		margin: 0 0.25rem;
 		min-width: 5ch;
+		height: @controls-height;
 
 		background-color: @white;
 		box-shadow: @box-shadow;
 
+		padding-inline: 1.5rem;
+
 		&::before {
 			position: absolute;
-			top: @padding;
-			color: lighten(@black, 40%);
+			color: @dark-grey;
 		}
 
 		&.x {
-			padding-inline: @padding @padding * 2;
-			text-align: right;
+			justify-content: flex-end;
+			padding-left: 0.75rem;
 
 			&::before {
 				content: 'x';
@@ -169,8 +250,8 @@ body {
 		}
 
 		&.z {
-			padding-inline: @padding * 2 @padding;
-			text-align: left;
+			justify-content: flex-start;
+			padding-right: 0.75rem;
 
 			&::before {
 				content: 'z';
@@ -198,9 +279,10 @@ ul {
 	li {
 		padding: 0.5rem 1rem;
 		cursor: pointer;
+		transition: @duration @timing-function;
 
 		&:hover {
-			background-color: @grey;
+			background-color: @light-grey;
 		}
 	}
 }
