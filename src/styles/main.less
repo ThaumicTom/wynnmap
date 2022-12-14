@@ -1,4 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=Space+Mono&display=swap');
+@font-face {
+	font-family: 'Space Grotesk';
+	src: url('/assets/fonts/SpaceGrotesk400.ttf');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Space Grotesk';
+	src: url('/assets/fonts/SpaceGrotesk700.ttf');
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'Space Mono';
+	src: url('/assets/fonts/SpaceMono.ttf');
+}
 
 :root {
 	font-family: 'Space Grotesk', sans-serif;
@@ -113,7 +128,7 @@ body {
 
 		color: @color-province;
 
-		font-weight: 900;
+		font-weight: 700;
 		font-size: calc(@label-font-size + 0.5rem);
 		opacity: calc(1 - @label-opacity);
 	}
