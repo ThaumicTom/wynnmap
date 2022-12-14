@@ -25,11 +25,11 @@ export const createMap = (container: HTMLElement, mapData: MapData): L.Map => {
 		crs: CRSPixel,
 		minZoom: mapData.minZoom,
 		maxZoom: mapData.maxZoom,
+		zoomControl: false,
+		attributionControl: false,
 	});
 
-	const imageOverlay = L.imageOverlay(mapData.imagePath, calculateBounds(mapData));
-
-	imageOverlay.addTo(map);
+	L.imageOverlay(mapData.imagePath, calculateBounds(mapData)).addTo(map);
 
 	map.setView(
 		L.latLng({
@@ -62,13 +62,13 @@ const parsePosition = ({ x, z }): L.LatLng => {
 	});
 };
 
-export const addLabel = ({ name, position, filters }: LabelOptions) => {
+export const addLabel = ({ name, position, level, filters }: LabelOptions) => {
 	const classNames = filters.map((f) => f.toLowerCase());
 	const parsedPosition = parsePosition(position);
 
 	return addWaypoint(parsedPosition, {
 		className: ['label', ...classNames].join(' '),
-		html: `<span>${name}</span>`,
+		html: `<span>${name}</span>${level ? `<span class="subtext">Level ${level}</span>` : ''}`,
 	});
 };
 
