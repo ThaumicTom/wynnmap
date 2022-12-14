@@ -73,8 +73,15 @@ body {
 	font-family: @font;
 	color: @white;
 
-	-webkit-text-stroke: @label-text-stroke fadeout(@black, 20%);
-	paint-order: stroke fill;
+	.overlay {
+		z-index: 1;
+	}
+
+	.outline {
+		-webkit-text-stroke: @label-text-stroke fadeout(@black, 20%);
+		color: transparent;
+		z-index: 0;
+	}
 
 	transition-property: transform, font-size, opacity, text-stroke !important;
 

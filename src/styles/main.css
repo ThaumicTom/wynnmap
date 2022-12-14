@@ -53,13 +53,19 @@ body p {
 .label {
   font-family: 'Space Grotesk', sans-serif;
   color: #edf2f4;
-  -webkit-text-stroke: calc(0.2rem + 0.2rem * calc(var(--zoom-level) * var(--zoom-level))) rgba(43, 45, 66, 0.8);
-  paint-order: stroke fill;
   transition-property: transform, font-size, opacity, text-stroke !important;
   background-color: transparent;
   box-shadow: none;
   padding: 0;
   border: 0;
+}
+.label .overlay {
+  z-index: 1;
+}
+.label .outline {
+  -webkit-text-stroke: calc(0.2rem + 0.2rem * calc(var(--zoom-level) * var(--zoom-level))) rgba(43, 45, 66, 0.8);
+  color: transparent;
+  z-index: 0;
 }
 .label.place {
   font-weight: 700;

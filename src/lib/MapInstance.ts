@@ -66,9 +66,13 @@ export const addLabel = ({ name, position, level, filters }: LabelOptions) => {
 	const classNames = filters.map((f) => f.toLowerCase());
 	const parsedPosition = parsePosition(position);
 
+	const result = `<span>${name}</span>${
+		level ? `<span class="subtext">Level ${level}</span>` : ''
+	}`;
+
 	return addWaypoint(parsedPosition, {
 		className: ['label', ...classNames].join(' '),
-		html: `<span>${name}</span>${level ? `<span class="subtext">Level ${level}</span>` : ''}`,
+		html: `<span class="overlay">${result}</span><span class="outline">${result}</span>`,
 	});
 };
 
