@@ -49,53 +49,71 @@
 		);
 	};
 
-	const hideContextMenu = (event) => {
-		if (event.composedPath().includes(document.getElementById('contextmenu'))) return;
-
-		contextmenu = false;
-	};
-
-	let x: number = 0,
-		z: number = 0,
-		cursorX: number = 0,
-		cursorY: number = 0,
+	let mapPosition: Vector3 = { x: 0, z: 0 },
+		zoom: number = 0,
+		mapHandlers: any,
 		contextmenu: boolean = false;
 
-	const copyCoordinates = () => {
-		navigator.clipboard.writeText(`${x} ${z}`);
-
-		contextmenu = false;
+	const showContextMenu = (show: boolean = true) => {
+		contextmenu = show;
 	};
 
-	const showCoordinates = () => {
-		return `${x}, ${z}`;
+	const tryHidingContextMenu = (event: Event) => {
+		if (event.composedPath().includes(document.getElementById('contextmenu'))) return;
+		showContextMenu(false);
+	};
+
+	const copyCoordinates = ({ x, z }: Vector3) => {
+		navigator.clipboard.writeText(`${x} ${z}`);
+		showContextMenu(false);
 	};
 
 	// Set map instance
-	const mapAction = (container: HTMLDivElement): { destroy: () => void } => {
+	const mapAction = (container: HTMLDivElement): any => {
 		let map = createMap(container, mainMapData);
 
 		addWaypoints(map, ['./assets/data/places.yaml', './assets/data/provinces.yaml']);
 
 		map.on('mousemove', (event) => {
-			x = Math.round(event.latlng.lng);
-			z = Math.round(event.latlng.lat);
+			mapPosition.x = Math.round(event.latlng.lng);
+			mapPosition.z = Math.round(event.latlng.lat);
 		});
+
+		let cursorPosition: Vector2 = { x: 0, y: 0 };
 
 		map.on('contextmenu', (event) => {
 			event.originalEvent.preventDefault();
-			contextmenu = true;
-			cursorX = event.containerPoint.x;
-			cursorY = event.containerPoint.y;
+			cursorPosition.x = event.containerPoint.x;
+			cursorPosition.y = event.containerPoint.y;
+			showContextMenu();
 		});
 
 		map.on('mousedown', () => {
-			contextmenu = false;
+			showContextMenu(false);
 		});
 
 		map.on('zoomstart', () => {
-			contextmenu = false;
+			showContextMenu(false);
 		});
+
+		map.on('zoomanim', (event) => {
+			zoom = event.zoom;
+		});
+
+		mapHandlers = {
+			zoomIn: () => {
+				map.zoomIn();
+			},
+			zoomOut: () => {
+				map.zoomOut();
+			},
+			getPosition: (): Vector3 => {
+				return mapPosition;
+			},
+			getCursorPosition: (): Vector2 => {
+				return cursorPosition;
+			},
+		};
 
 		return {
 			destroy: () => {
@@ -104,39 +122,48 @@
 			},
 		};
 	};
+
+	// Icons
+	import Dash from 'svelte-bootstrap-icons/lib/Dash.svelte';
+	import Plus from 'svelte-bootstrap-icons/lib/Plus.svelte';
+	import ContextMenu from './components/ContextMenu.svelte';
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<main on:click={hideContextMenu}>
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
+<main on:click={tryHidingContextMenu} aria-hidden="true">
 	<div id="map" use:mapAction />
+	<div class="zoom-control">
+		<button
+			on:click={mapHandlers.zoomIn}
+			aria-hidden="true"
+			class:disabled={zoom == mainMapData.maxZoom}><Plus /></button
+		>
+		<button
+			on:click={mapHandlers.zoomOut}
+			aria-hidden="true"
+			class:disabled={zoom == mainMapData.minZoom}><Dash /></button
+		>
+	</div>
 	<div class="position font-monospace">
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div on:click={copyCoordinates} class="x">{x}</div>
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div on:click={copyCoordinates} class="z">{z}</div>
+		<div on:click={() => copyCoordinates(mapPosition)} aria-hidden="true" class="x">
+			{mapPosition.x}
+		</div>
+		<div on:click={() => copyCoordinates(mapPosition)} aria-hidden="true" class="z">
+			{mapPosition.z}
+		</div>
 	</div>
 	{#if contextmenu}
-		<div id="contextmenu" style="top: {cursorY}px; left: {cursorX}px">
-			<ul>
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<li on:click={copyCoordinates}>
-					<div>
-						{showCoordinates()}
-					</div>
-				</li>
-			</ul>
-		</div>
+		<ContextMenu
+			mapPosition={mapHandlers.getPosition()}
+			elementPosition={mapHandlers.getCursorPosition()}
+			on:copyCoordinates={(event) => copyCoordinates(event.detail.mapPosition)}
+			on:showContextMenu={(event) => showContextMenu(event.detail.show)}
+		/>
 	{/if}
 </main>
 
 <style>
+	main,
 	#map {
-		width: 100%;
-		height: 100%;
-	}
-
-	main {
 		width: 100%;
 		height: 100%;
 	}

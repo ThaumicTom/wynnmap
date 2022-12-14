@@ -92,44 +92,86 @@ body p {
   transform: translate(-50%, -50%);
   white-space: nowrap;
 }
+.zoom-control,
 .position {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+}
+.zoom-control {
+  left: 0;
+  bottom: 0;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  z-index: 10002;
+  color: #2b2d42;
+  text-align: center;
+  box-shadow: 0 0.25rem 0.5rem rgba(43, 45, 66, 0.5);
+  border-radius: 0.25rem;
+}
+.zoom-control > button {
+  cursor: pointer;
+  background-color: #edf2f4;
+  position: relative;
+  padding-inline: 0.5rem;
+  border: 0;
+  border-right: 1px solid #d7d7d7;
+  height: 3rem;
+  transition: 150ms ease-out;
+}
+.zoom-control > button:first-child {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.zoom-control > button:last-child {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-right: 0;
+}
+.zoom-control > button:hover {
+  background-color: #d7d7d7;
+}
+.zoom-control > button.disabled {
+  background-color: #d7d7d7;
+  color: #888bb1;
+  cursor: default;
+}
+.position {
   bottom: 0;
   width: 100%;
   margin-bottom: 1rem;
   z-index: 10001;
   color: #2b2d42;
-  text-align: center;
 }
 .position > div {
   cursor: pointer;
+  display: flex;
+  align-items: center;
   position: relative;
   border-radius: 0.25rem;
-  padding-block: 0.75rem;
   margin: 0 0.25rem;
   min-width: 5ch;
+  height: 3rem;
   background-color: #edf2f4;
   box-shadow: 0 0.25rem 0.5rem rgba(43, 45, 66, 0.5);
+  padding-inline: 1.5rem;
 }
 .position > div::before {
   position: absolute;
-  top: 0.75rem;
   color: #888bb1;
 }
 .position > div.x {
-  padding-inline: 0.75rem 1.5rem;
-  text-align: right;
+  justify-content: flex-end;
+  padding-left: 0.75rem;
 }
 .position > div.x::before {
   content: 'x';
   right: 0.5rem;
 }
 .position > div.z {
-  padding-inline: 1.5rem 0.75rem;
-  text-align: left;
+  justify-content: flex-start;
+  padding-right: 0.75rem;
 }
 .position > div.z::before {
   content: 'z';
@@ -150,7 +192,8 @@ ul {
 ul li {
   padding: 0.5rem 1rem;
   cursor: pointer;
+  transition: 150ms ease-out;
 }
 ul li:hover {
-  background-color: #b1b1b1;
+  background-color: #d7d7d7;
 }
