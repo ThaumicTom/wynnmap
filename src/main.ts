@@ -1,5 +1,5 @@
 import 'leaflet/dist/leaflet.css';
-import './styles/main.css';
+import './styles/main.less';
 
 import App from './App.svelte';
 
