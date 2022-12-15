@@ -82,30 +82,40 @@ body {
 @zoom-level-cubic: calc(@zoom-level * @zoom-level);
 
 .label {
-	@label-font-size: calc(0.5rem + 2.5rem * @zoom-level-cubic);
-	@label-text-stroke: calc(0.2rem + 0.2rem * @zoom-level-cubic);
-
 	font-family: @font;
-	color: @white;
+	transition-property: transform, opacity !important;
+	white-space: nowrap;
 
-	.overlay {
-		z-index: 1;
+	> span {
+		display: inline-block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		// Zoom Scaling
+		@scale-factor: 0.2;
+		@scale-function: calc(@zoom-level-cubic * (1 - @scale-factor) + @scale-factor);
+
+		transform: translate(-50%, -50%) scale(@scale-function);
+		transition-property: transform;
+		transition: @leaflet-duration @leaflet-timing-function;
+
+		// Text Outline
+		&.outline {
+			-webkit-text-stroke: 0.5rem fadeout(@black, 20%);
+			color: transparent;
+			z-index: -1;
+		}
 	}
 
-	.outline {
-		-webkit-text-stroke: @label-text-stroke fadeout(@black, 20%);
-		color: transparent;
-		z-index: 0;
-	}
-
-	transition-property: transform, font-size, opacity, text-stroke !important;
+	@label-font-size: 3rem;
 
 	&.place {
 		@label-opacity: clamp(0, calc(@zoom-level * 5 - 1), 1);
 
+		opacity: @label-opacity;
 		font-weight: 700;
 		font-size: @label-font-size;
-		opacity: @label-opacity;
 
 		&.major {
 			color: @color-major;
@@ -115,39 +125,23 @@ body {
 			color: @color-minor;
 		}
 
-		& .subtext {
+		.subtext {
+			position: absolute;
+			bottom: calc(@label-font-size / -2);
+			left: 50%;
+			transform: translate(-50%, 0);
 			font-size: calc(@label-font-size / 2);
-			margin-top: @label-font-size;
-			transition-property: font-size, margin-top;
-			transition: @leaflet-duration @leaflet-timing-function;
 		}
 	}
 
 	&.province {
 		@label-opacity: clamp(0, calc(@zoom-level * 5 - 2.25), 1);
 
-		color: @color-province;
-
-		font-weight: 700;
-		font-size: calc(@label-font-size + 0.5rem);
 		opacity: calc(1 - @label-opacity);
+		font-weight: 700;
+		font-size: calc(@label-font-size * 1.5);
+		color: @color-province;
 	}
-
-	// Reset
-	background-color: transparent;
-	box-shadow: none;
-	padding: 0;
-	border: 0;
-}
-
-#map .leaflet-marker-icon span {
-	display: inline-block;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-
-	white-space: nowrap;
 }
 
 .zoom-control,
