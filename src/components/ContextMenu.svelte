@@ -10,6 +10,11 @@
 		dispatch('copyCoordinates', { mapPosition });
 		dispatch('showContextMenu', { show: false });
 	};
+
+	const centerView = () => {
+		dispatch('centerView', { mapPosition });
+		dispatch('showContextMenu', { show: false });
+	};
 </script>
 
 <div id="contextmenu" style="top: {elementPosition.y}px; left: {elementPosition.x}px">
@@ -18,6 +23,9 @@
 			<div>
 				{mapPosition.x}, {mapPosition.z}
 			</div>
+		</li>
+		<li on:click={centerView} aria-hidden="true">
+			<div>Center view here</div>
 		</li>
 	</ul>
 </div>

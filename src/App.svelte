@@ -68,6 +68,11 @@
 		showContextMenu(false);
 	};
 
+	const centerView = ({ x, z }: Vector3) => {
+		mapHandlers.setView(x, z);
+		showContextMenu(false);
+	};
+
 	// Set map instance
 	const mapAction = (container: HTMLDivElement): any => {
 		let map = createMap(container, mainMapData);
@@ -113,6 +118,9 @@
 			getCursorPosition: (): Vector2 => {
 				return cursorPosition;
 			},
+			setView: (x: number, z: number, zoom: number) => {
+				map.setView([z, x], zoom);
+			},
 		};
 
 		return {
@@ -156,6 +164,7 @@
 			mapPosition={mapHandlers.getPosition()}
 			elementPosition={mapHandlers.getCursorPosition()}
 			on:copyCoordinates={(event) => copyCoordinates(event.detail.mapPosition)}
+			on:centerView={(event) => centerView(event.detail.mapPosition)}
 			on:showContextMenu={(event) => showContextMenu(event.detail.show)}
 		/>
 	{/if}
